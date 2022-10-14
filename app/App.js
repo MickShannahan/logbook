@@ -1,7 +1,7 @@
-import { ValuesController } from "./Controllers/ValuesController.js";
+import { EntriesController } from "./Controllers/EntriesController.js";
 
 class App {
-  valuesController = new ValuesController();
+  entriesController = new EntriesController()
 }
 
 window["app"] = new App();
