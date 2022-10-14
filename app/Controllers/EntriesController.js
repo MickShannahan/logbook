@@ -15,18 +15,21 @@ function _drawActiveEntry() {
   let entry = appState.activeEntry
   setHTML('active-entry', entry.ActiveTemplate)
   document.body.style.backgroundImage = `url(./assets/img/${entry.img}.jpg)`
+  _drawLinks()
+}
 
+function _drawLinks() {
+  setHTML('links', appState.activeEntry.EntryLinks)
 }
 
 export class EntriesController {
   constructor() {
     appState.on('entries', _drawEntries)
+    appState.on('activeEntry', _drawEntries)
     appState.on('activeEntry', _drawActiveEntry)
     _drawEntries()
+    _drawActiveEntry()
   }
-
-
-
 
   newEntry() {
     try {
@@ -37,11 +40,16 @@ export class EntriesController {
       entriesService.newEntry(entryData)
       form.reset()
     } catch (error) {
-
+      console.error(error)
     }
   }
 
   setActive(id) {
     entriesService.setActive(id)
+  }
+
+  updateEntry() {
+    let input = window.event.target
+    entriesService.updateEntry(input.innerText)
   }
 }

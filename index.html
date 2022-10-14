@@ -23,22 +23,22 @@
   </header>
   <main>
     <!-- SECTION left Nav -->
-    <section class="grid-left logs text-light">
+    <section class="grid-left p-rel text-light">
       <div class="container">
         <section class="row ">
-          <div class="col-12 text-center"> Logs</div>
+          <div class="col-12 text-center font-fancy"> Logs</div>
         </section>
         <section id="entries">
-          <!-- Log entries go here -->
+          <!-- STUB Log entries go here -->
         </section>
       </div>
-      <button class="btn btn-primary new-log-button" data-bs-toggle="modal" data-bs-target="#new-entry"><i
+      <button class="btn btn-outline-primary new-log-button" data-bs-toggle="modal" data-bs-target="#new-entry"><i
           class="mdi mdi-plus"></i></button>
     </section>
     <!-- SECTION center -->
-    <section class="grid-center text-light">
+    <section class="grid-center  text-light">
       <div class="container mt-3">
-        <div id="active-entry" class="row justify-content-center">
+        <div id="active-entry" class="row p-rel justify-content-center">
           <!-- STUB active log -->
           <!-- <h3 class="col-10 text-center">Title of Log</h3>
           <textarea class="col-10 entry-body" name="">Text of log</textarea> -->
@@ -46,22 +46,30 @@
       </div>
     </section>
     <!-- SECTION Resources -->
-    <section class="grid-right">
-      resources
+    <section class="grid-right p-rel">
+      <div class="container text-light">
+        <section class="row">
+          <div class="col-12 text-center font-fancy"> Resources</div>
+        </section>
+        <section id="links" class="row">
+          <!-- STUB links go here -->
+        </section>
+        <button class="btn btn-outline-primary new-link-button" data-bs-toggle="modal" data-bs-target="#new-link"><i
+            class="mdi mdi-plus"></i></button>
+      </div>
     </section>
   </main>
   <footer class="bg-dark text-light">
-    <!-- Modal Body -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-    <div class="modal fade" id="new-entry" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-      role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+    <!-- SECTION new entry modal -->
+    <div class="modal fade" id="new-entry" tabindex="-1" data-bs-keyboard="false" role="dialog"
+      aria-labelledby="modalTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content bg-dark text-light">
           <div class="modal-header">
             <h5 class="modal-title" id="modalTitleId">New Entry</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div id="modal-form" class="modal-body">
             <!-- STUB new entry form -->
             <form onsubmit="app.entriesController.newEntry()">
               <div class="mb-3">
@@ -78,7 +86,38 @@
                   <option value="Sands">Jakarta</option>
                 </select>
                 <small id="helpId" class="form-text text-muted">set the mood for this note</small>
-                <button class="btn btn-secondary">submit</button>
+                <div class="mb-3">
+                  <button class="btn btn-secondary">submit</button>
+                </div>
+              </div>
+          </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <!-- SECTION new link modal -->
+    <div class="modal fade" id="new-link" tabindex="-1" data-bs-keyboard="false" role="dialog"
+      aria-labelledby="modalTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">Add Resource</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div id="modal-form" class="modal-body">
+            <!-- STUB new entry form -->
+            <form onsubmit="app.linksController.newLink()">
+              <div class="mb-3">
+                <label for="" class="form-label">name</label>
+                <input type="text" class="form-control" name="name" id="" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted">what will be displayed</small>
+                <label for="" class="form-label">url</label>
+                <input type="text" class="form-control" name="url" id="" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted">url to resource</small>
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-secondary">add</button>
               </div>
           </div>
           </form>
@@ -86,12 +125,6 @@
       </div>
     </div>
 
-
-    <!-- Optional: Place to the bottom of scripts -->
-    <script>
-      const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-
-    </script>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
