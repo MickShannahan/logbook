@@ -14,6 +14,7 @@ export class Entry {
     this.title = data.title
     this.img = data.img
     this.body = data.body || ''
+    this.lastModified = data.lastModified || new Date()
     this.resources = []
   }
 

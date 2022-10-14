@@ -4,16 +4,61 @@
 @import "./custom.scss";
 @import "./loaders.scss";
 
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat&family=Noto+Sans+Mono&display=swap');
+
+.font-fancy {
+  font-family: 'Major Mono Display', monospace;
+}
+
+.font-1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-2 {
+  font-family: 'Noto Sans Mono', monospace;
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: $body-bg;
+  background: rgb(3, 3, 24);
+  background: linear-gradient(0deg, $dark 10%, rgb(4, 43, 39) 100%);
 }
 
 main {
   flex-grow: 1;
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  grid-template-rows: 100%;
 }
 
+.grid-left {
+  grid-column: 1 / span 1;
+  grid-row: auto;
+  background-color: rgb(19, 19, 19);
+}
 
+.grid-center {
+  grid-column: 2 / span 1;
+  grid-row: auto;
 
+}
+
+.grid-right {
+  grid-column: 3 / span 1;
+  grid-row: auto;
+  background-color: rgb(19, 19, 19);
+}
+
+.logs {
+  position: relative;
+}
+
+.new-log-button {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  width: 60px;
+  height: 60px;
+}
