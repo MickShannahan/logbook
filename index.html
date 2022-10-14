@@ -28,13 +28,22 @@
         <section class="row ">
           <div class="col-12 text-center"> Logs</div>
         </section>
+        <section id="entries">
+          <!-- Log entries go here -->
+        </section>
       </div>
       <button class="btn btn-primary new-log-button" data-bs-toggle="modal" data-bs-target="#new-entry"><i
           class="mdi mdi-plus"></i></button>
     </section>
     <!-- SECTION center -->
-    <section class="grid-center">
-      note section
+    <section class="grid-center text-light">
+      <div class="container mt-3">
+        <div id="active-entry" class="row justify-content-center">
+          <!-- STUB active log -->
+          <!-- <h3 class="col-10 text-center">Title of Log</h3>
+          <textarea class="col-10 entry-body" name="">Text of log</textarea> -->
+        </div>
+      </div>
     </section>
     <!-- SECTION Resources -->
     <section class="grid-right">
@@ -54,7 +63,7 @@
           </div>
           <div class="modal-body">
             <!-- STUB new entry form -->
-            <form action="">
+            <form onsubmit="app.entriesController.newEntry()">
               <div class="mb-3">
                 <label for="" class="form-label">title</label>
                 <input type="text" class="form-control" name="title" id="" aria-describedby="helpId" placeholder="">
@@ -62,13 +71,14 @@
               </div>
               <div class="mb-3">
                 <label for="" class="form-label">Mood</label>
-                <select class="form-select form-select-lg" name="" id="">
+                <select class="form-select form-select-lg" name="img" id="">
                   <option selected>Select one</option>
-                  <option value="">New Delhi</option>
-                  <option value="">Istanbul</option>
-                  <option value="">Jakarta</option>
+                  <option value="Pillars">New Delhi</option>
+                  <option value="Core">Istanbul</option>
+                  <option value="Sands">Jakarta</option>
                 </select>
                 <small id="helpId" class="form-text text-muted">set the mood for this note</small>
+                <button class="btn btn-secondary">submit</button>
               </div>
           </div>
           </form>

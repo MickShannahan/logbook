@@ -14109,6 +14109,8 @@ body {
   min-height: 100vh;
   background: #030318;
   background: linear-gradient(0deg, #0e0e0e 10%, #042b27 100%);
+  background-position: center;
+  background-size: cover;
 }
 
 main {
@@ -14145,6 +14147,17 @@ main {
   right: 1em;
   width: 60px;
   height: 60px;
+}
+
+.entry-body {
+  background-color: rgba(255, 255, 255, 0.096);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.151);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.397);
+  min-height: 30vh;
+  max-height: 90vh;
+  resize: none;
 }
 
 /*# sourceMappingURL=main.css.map */
