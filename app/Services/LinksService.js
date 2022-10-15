@@ -17,6 +17,7 @@ class LinksService {
   deleteLink(index) {
     appState.activeEntry.resources.splice(index, 1)
     saveState('activeEntry', appState.activeEntry)
+    appState.emit('activeEntry')
   }
 }
 

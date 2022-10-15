@@ -6,27 +6,72 @@ export class Entry {
   constructor(data) {
     this.id = data.id || generateId()
     this.title = data.title
+    this.theme = data.theme || 'light'
     this.img = data.img
     this.body = data.body || ''
-    this.lastModified = data.lastModified || new Date()
+    this.lastModified = new Date(data.lastModified) || new Date()
     this.resources = data.resources || []
   }
+  // Computed
+  get isActive() {
+    if (appState.activeEntry) {
+      return appState.activeEntry.id == this.id
+    }
+  }
 
+  get Time() {
+    return this.lastModified.getHours() + ':' + this.lastModified.getMinutes()
+  }
+
+  get TimeAgo() {
+    let milli = this.lastModified.getTime()
+    let now = new Date().getTime()
+    let seconds = Math.floor((now - milli) / 1000);
+    let interval = seconds / 31536000;
+    if (interval > 1) {
+      return Math.floor(interval) + " years ago";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+      return Math.floor(interval) + " months ago";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+      return Math.floor(interval) + " d";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+      return Math.floor(interval) + " h";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+      return Math.floor(interval) + " m ago";
+    }
+    interval = seconds / 29;
+    if (interval > 1) {
+      return "less a minute ago";
+    }
+    return Math.floor(seconds) + " s ago";
+  }
+
+
+  // Templates
   get Template() {
     return `
-      <p class="p-2 selectable ${this.isActive ? 'active-entry' : ''}" onclick="app.entriesController.setActive('${this.id}')">${this.title}</p>
+      <p class="p-2 selectable entry d-flex justify-content-between ${this.isActive ? 'active-entry' : ''}" onclick="app.entriesController.setActive('${this.id}')">
+      ${this.title}<span class="text-dark fancy-font lighten-30">${this.Time}<span>
+      </p>
     `
   }
 
-  get isActive() {
-    return appState.activeEntry.id == this.id
-  }
 
   get ActiveTemplate() {
     return `
-    <h3 class="col-10 text-center">${this.title}</h3>
-    <div id="entry-body" class="col-10 entry-body p-2 " contenteditable onkeyup="app.entriesController.updateEntry()">${this.body}</div>
-    <button class="delete-entry btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
+    <h3 class="col-10 text-center text-${this.theme}">${this.title}</h3>
+    <div id="entry-body" class="col-10 entry-body p-2 text-${this.theme}" contenteditable onblur="app.entriesController.updateEntry()">${this.body}</div>
+    <div class="btn btn-outline-${this.theme} theme-button" onclick="app.entriesController.swapTheme()"><i class="mdi mdi-lightbulb"></i></div>
+    <button class="delete-entry btn btn-outline-danger" onclick="app.entriesController.deleteEntry('${this.id}')"><i class="mdi mdi-delete"></i></button>
+    <small id="save-timer" class="col-10 text-primary text-end">saved ${this.TimeAgo}</small>
     `
   }
 
