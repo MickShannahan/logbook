@@ -28,7 +28,21 @@ function _drawLinks() {
 function _drawSaveTimer() {
   setHTML('save-timer', 'saved ' + appState.activeEntry.TimeAgo)
 }
-
+function _attachListeners() {
+  console.log('attached listner')
+  let elm = document.getElementById('entry-body')
+  if (elm) {
+    elm.addEventListener('keydown', (k) => {
+      if (k.ctrlKey && k.key == 's') {
+        k.preventDefault()
+        entriesService.updateEntry(elm.innerText)
+      } else if (k.ctrlKey && k.key == 'z') {
+        k.preventDefault()
+        entriesService.updateEntry(appState.activeEntry.body)
+      }
+    })
+  }
+}
 
 
 export class EntriesController {
@@ -36,8 +50,10 @@ export class EntriesController {
     appState.on('entries', _drawEntries)
     appState.on('activeEntry', _drawEntries)
     appState.on('activeEntry', _drawActiveEntry)
+    appState.on('activeEntry', _attachListeners)
     _drawEntries()
     _drawActiveEntry()
+    _attachListeners()
     setInterval(this.saveEntry, 30000)
     setInterval(_drawSaveTimer, 1000)
   }
