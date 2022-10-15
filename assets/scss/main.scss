@@ -18,6 +18,11 @@
   font-family: 'Noto Sans Mono', monospace;
 }
 
+.bg-dark {
+  opacity: .9;
+  backdrop-filter: blur(15px);
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -46,7 +51,8 @@ main {
 .grid-left {
   grid-column: 1 / span 1;
   grid-row: auto;
-  background-color: rgb(19, 19, 19);
+  background-color: rgb(19, 19, 19, .8);
+  backdrop-filter: blur(5px);
 }
 
 .grid-center {
@@ -57,7 +63,8 @@ main {
 .grid-right {
   grid-column: 3 / span 1;
   grid-row: auto;
-  background-color: rgb(19, 19, 19);
+  background-color: rgb(19, 19, 19, .8);
+  backdrop-filter: blur(5px);
 }
 
 .p-rel {
