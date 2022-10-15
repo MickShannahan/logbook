@@ -38,9 +38,18 @@ function _attachListeners() {
         entriesService.updateEntry(elm.innerText)
       } else if (k.ctrlKey && k.key == 'z') {
         k.preventDefault()
-        entriesService.updateEntry(appState.activeEntry.body)
+        elm.innerText = appState.activeEntry.body
       }
     })
+    // elm.addEventListener(`keydown`, (e) => {
+    //   if (e.keyCode == 9) {
+    //     e.preventDefault()
+    //     let cursorPos = elm;
+    //     console.log('tab', cursorPos.);
+    //     // elm.innerText = elm.innerText.substr(0, cursorPos) + ')' +
+    //     //   elm.innerText.substr(cursorPos);
+    //   }
+    // })
   }
 }
 
