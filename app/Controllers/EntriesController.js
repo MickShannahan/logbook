@@ -26,7 +26,7 @@ function _drawLinks() {
 }
 
 function _drawSaveTimer() {
-  let timerElm = document.getElementById('saveTimer')
+  let timerElm = document.getElementById('save-timer')
   if (timerElm) {
     setHTML('save-timer', 'saved ' + appState.activeEntry.TimeAgo)
   }
