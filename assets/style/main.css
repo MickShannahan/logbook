@@ -14103,7 +14103,7 @@ textarea.form-control-lg {
   font-family: "Noto Sans Mono", monospace;
 }
 
-.bg-dark {
+header {
   opacity: 0.9;
   backdrop-filter: blur(15px);
 }
