@@ -26,7 +26,10 @@ function _drawLinks() {
 }
 
 function _drawSaveTimer() {
-  setHTML('save-timer', 'saved ' + appState.activeEntry.TimeAgo)
+  let timerElm = document.getElementById('saveTimer')
+  if (timerElm) {
+    setHTML('save-timer', 'saved ' + appState.activeEntry.TimeAgo)
+  }
 }
 function _attachListeners() {
   console.log('attached listner')
